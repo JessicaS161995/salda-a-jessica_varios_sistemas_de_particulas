@@ -1,34 +1,39 @@
-class Particula{
-    constructor(_x, _y) {
-        this.pos = createVector(_x, _y);
-        this.lifespan = Math.ceil(random(10, 200));
-        this.isAlive = true;
-        this.side = math.ceil(random(3, 15));
-    }
-    update() {
-        this.r = random();
+class Particula {
+	constructor(_x, _y) {
+		this.pos = createVector(_x, _y);
+		this.lifespan = Math.ceil(random(10, 200));
+		this.isAlive = true;
+		this.side = Math.ceil(random(3, 15));
+		this.color = random(0, 150);
+	}
+	update() {
+		this.r = random(100);
 
-        if (this.r < 0.25) {
-            //se mueve hacia arriba
-            this.pos.y -= this.side;
-        } else if (this.r < 0.5) {
-            //hacia la derecha
+		if (this.r < 20) {
+			// hacia arriba
+            this.pos.x -= this.side;
+            // hacia la derecha
+		} else if (this.r < 40) {
             this.pos.x += this.side;
-        } else if (this.r < 0.75) {
-            //hacia abajo
-            this.pos.y += this.side;    
-        } else {
-            //hacia la izquierda
-            this.pos.x -= this.side;   
-        }
-        
-        this.lifespan -= 1;
+            // hacia abajo
+		} else if (this.r < 75) {
+			this.pos.y += this.side;
+		} else {
+			// hacia izquierda
+			this.pos.x -= this.side;
+		}
 
-        if (this.lifespan <= 0) {
+		this.lifespan -= 1;
+
+		if (this.lifespan <= 0) {
             this.isAlive = false;
-        }
-    }
-    display() {
-        square(this.pos.x, this.pos.y, this.side);
-    }
+            
+
+		}
+	}
+	display() {
+		fill(this.color);
+		stroke(255);
+		square(this.pos.x, this.pos.y, this.side);
+	}
 }
