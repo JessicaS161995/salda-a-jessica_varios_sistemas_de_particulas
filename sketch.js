@@ -1,12 +1,17 @@
-let p = [];
+let s;
+let v;
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  p = new Particula(width / 2, height / 2);
+  background(10, 10, 0);
+	s = new Sistema();
+	v = new Sistema();
 }
 
 function draw() {
-  if (p.isAlive) {
-  p.update();
-  p.display();
-  }
+	background(255, 20);
+	s.update();
+	s.display();
+	v.update();
+	v.display();
 }
